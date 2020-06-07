@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill Incoice</title>
+  </head>
+  <body>
+    <main class="main-div">
+      <div class="input-div">
+        <label>Item: </label><input type="text" name="item" id="item" />
+        <label>Price: </label><input type="text" name="price" id="price" />
+        <label>Qty: </label><input type="text" name="qty" id="qty" />
+        <label>Discount</label
+        ><input type="text" name="discount" id="discount" /> <label>Tax</label
+        ><input type="text" name="tax" id="tax" />
+
+        <button onclick="addData()">Submit</button>
+      </div>
+      <div class="table-div">
+        <table border="1">
+          <caption>
+            Invoice
+          </caption>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Discount</th>
+            <th>Tax</th>
+            <th>Total</th>
+            <th>Edit</th>
+          </tr>
+          <tbody id="invoice-data"></tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
+<script type="text/javascript">
+  let invoicedata = document.querySelector("#invoice-data");
+  let sampleInvoice = [
+    {
+      id: 1,
+      item: "Pen",
+      price: 100,
+      qty: 5,
+      discount: 10,
+      tax: 15,
+      total: null,
+    },
+  ];
+  let loadData = () => {
+    invoicedata.innerHTML = "";
+    sampleInvoice.map((data) => {
+      invoicedata.innerHTML += `
+        <tr>
+        <td>${data.item}</td>
+        <td>${data.price}</td>
+        <td>${data.qty}</td>
+        <td>${data.discount}</td>
+        <td>${data.tax}</td>
+        <td>${data.total}</td>
+        <td>
+          <button onClick="editData(${data.id})">Edit</button>
+          <button onClick = "deleteData(${data.id})">Delete</button>
+      </td>
+        </tr>`;
+    });
+  };
+  let addData = () => {
+    let item = document.querySelector("#item").value;
+    let price = document.querySelector("#price").value;
+    let qty = document.querySelector("#qty").value;
+    let discount = document.querySelector("#discount").value;
+    let tax = document.querySelector("#tax").value;
+    let sum = Number(price) * Number(qty);
+    let total =
+      Number(sum) -
+      (Number(sum) * Number(discount)) / 100 +
+      (Number(sum) * Number(tax)) / 100;
+    let data = {
+      id: Math.random(),
+      item: item,
+      price: price,
+      qty: qty,
+      discount: discount,
+      tax: tax,
+      total: total,
+    };
+    sampleInvoice.push(data);
+    loadData();
+  };
+  let editData = (id) => {
+    alert(id);
+    loadData();
+  };
+  let deleteData = (id) => {
+    sampleInvoice = sampleInvoice.filter((data) => data.id !== id);
+    loadData();
+  };
+  loadData();
+</script>
