@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Management</title>
+    <link rel="stylesheet" href="./Assets/invoice.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <h1>Name of the Organization</h1>
+      <!-- //for the table -->
+      <div>
+        <!-- //for search Bar -->
+        <h1>Invoice</h1>
+        <div>
+          <input
+            class="search-input"
+            type="text"
+            name="search"
+            id="id_search"
+            placeholder="Enter an item name"
+          />
+          <i class="material-icons">search</i>
+        </div>
+
+        <table role="table" class="table">
+          <thead role="rowgroup">
+            <tr role="row">
+              <th role="columnheader">Date</th>
+              <th role="columnheader">Item</th>
+              <th role="columnheader">Price</th>
+              <th role="columnheader">Qty</th>
+              <th role="columnheader">Discount</th>
+              <th role="columnheader">Total</th>
+              <th role="columnheader">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="body_data" role="rowgroup"></tbody>
+          <tbody id="input_data" role="rowgroup">
+            <tr role="row">
+              <td></td>
+              <td data-title="Item" role="cell">
+                <div class="col">
+                  <input
+                    type="text"
+                    name="item"
+                    id="id_item"
+                    onblur="valid_item()"
+                    list="itemList"
+                    autocomplete="off"
+                  />
+                  <datalist id="itemList" class="itemClass"> </datalist>
+
+                  <span class="error-msg" id="id_item_err"></span>
+                </div>
+              </td>
+              <td data-title="Price" role="cell">
+                <div class="col">
+                  <input
+                    type="text"
+                    name="price"
+                    id="id_price"
+                    autocomplete="off"
+                    onblur="valid_price()"
+                  />
+                  <span class="error-msg" id="id_price_err"></span>
+                </div>
+              </td>
+              <td data-title="Qty" role="cell">
+                <div class="col">
+                  <input
+                    type="text"
+                    name="qty"
+                    autocomplete="off"
+                    id="id_qty"
+                    onblur="valid_qty()"
+                  />
+                  <span class="error-msg" id="id_qty_err"></span>
+                </div>
+              </td>
+              <td data-title="Discount" role="cell">
+                <div class="col">
+                  <input
+                    type="text"
+                    name="discount"
+                    id="id_discount"
+                    autocomplete="off"
+                    onblur="valid_discount()"
+                  />
+                  <span class="error-msg" id="id_discount_err"></span>
+                </div>
+              </td>
+              <td colspan="2" data-title="Add" role="cell">
+                <i class="material-icons" onclick="addInvolce()">add_circle</i>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody id="body_search" role="rowgroup"></tbody>
+          <tfoot role="rowgroup">
+            <tr role="row">
+              <td class="cell" colspan="5" align="center">
+                Value Added Income(VAT)
+              </td>
+              <td class="cell" colspan="2">13%</td>
+            </tr>
+            <tr role="row">
+              <td class="cell" colspan="5" align="center">Sum total</td>
+              <td class="cell" colspan="2">Rs.<span id="id_total"></span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
+<!-- // to check the validation -->
+<script src="./js/ItemLists.js"></script>
+<script src="./js/validation_addData.js"></script>
+<script type="text/javascript">
+  let bodyData = document.querySelector("#body_data");
+
+  let sampleData = [
+    {
+      id: 1,
+      date: Date.now(),
+      item: "Pen",
+      price: 100,
+      qty: 5,
+      discount: 10,
+      total: null,
+    },
+  ];
+
+  let load_data = () => {
+    bodyData.innerHTML = "";
+    sampleData.map(
+      (data) =>
+        (bodyData.innerHTML += `<tr role="row">
+              <td data-title="Date" role="cell"${data.date}</td>
+              <td data-title="Item" role="cell">${data.item}</td>
+              <td data-title="Price" role="cell">${data.price}</td>
+              <td data-title="Qty" role="cell">${data.qty}</td>
+              <td data-title="Discount" role="cell">${data.discount}</td>
+              <td data-title="Total" role="cell">Rs.${data.total}</td>
+              <td data-title="Delete" role="cell">
+                <i class="material-icons">delete</i>
+              </td>
+            </tr>`),
+    );
+  };
+
+  //call to load the data
+  load_data();
+</script>

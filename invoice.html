@@ -12,8 +12,7 @@
         <label>Price: </label><input type="text" name="price" id="price" />
         <label>Qty: </label><input type="text" name="qty" id="qty" />
         <label>Discount</label
-        ><input type="text" name="discount" id="discount" /> <label>Tax</label
-        ><input type="text" name="tax" id="tax" />
+        ><input type="text" name="discount" id="discount" />
 
         <button onclick="addData()">Submit</button>
       </div>
@@ -27,11 +26,12 @@
             <th>Price</th>
             <th>Qty</th>
             <th>Discount</th>
-            <th>Tax</th>
+
             <th>Total</th>
             <th>Edit</th>
           </tr>
           <tbody id="invoice-data"></tbody>
+          <tfoot id="invoice-foot"></tfoot>
         </table>
       </div>
     </main>
@@ -39,6 +39,7 @@
 </html>
 <script type="text/javascript">
   let invoicedata = document.querySelector("#invoice-data");
+  let invoideFoot = document.querySelector("#invoice-foot");
   let sampleInvoice = [
     {
       id: 1,
@@ -46,10 +47,10 @@
       price: 100,
       qty: 5,
       discount: 10,
-      tax: 15,
       total: null,
     },
   ];
+
   let loadData = () => {
     invoicedata.innerHTML = "";
     sampleInvoice.map((data) => {
@@ -59,7 +60,7 @@
         <td>${data.price}</td>
         <td>${data.qty}</td>
         <td>${data.discount}</td>
-        <td>${data.tax}</td>
+       
         <td>${data.total}</td>
         <td>
           <button onClick="editData(${data.id})">Edit</button>
@@ -73,19 +74,18 @@
     let price = document.querySelector("#price").value;
     let qty = document.querySelector("#qty").value;
     let discount = document.querySelector("#discount").value;
-    let tax = document.querySelector("#tax").value;
+
     let sum = Number(price) * Number(qty);
     let total =
       Number(sum) -
       (Number(sum) * Number(discount)) / 100 +
-      (Number(sum) * Number(tax)) / 100;
+      (Number(sum) * 13) / 100;
     let data = {
       id: Math.random(),
       item: item,
       price: price,
       qty: qty,
       discount: discount,
-      tax: tax,
       total: total,
     };
     sampleInvoice.push(data);
