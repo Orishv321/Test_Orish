@@ -31,6 +31,8 @@
           />
           <i class="material-icons">search</i>
         </div>
+        <i class="material-icons" onclick="sortData(true)">trending_up</i>
+        <i class="material-icons" onclick="sortData(false)">trending_down</i>
 
         <table role="table" class="table">
           <thead role="rowgroup">
@@ -158,12 +160,33 @@
         </div>
       </div>
     </div>
+
+    <!-- ////update modules  -->
+
+    <div class="modal" id="modal-two" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Update</h2>
+          <a
+            href="#"
+            class="btn-close"
+            aria-hidden="true"
+            onclick="checkDelete(false)"
+            >×</a
+          >
+        </div>
+        <div id="id_update_data"></div>
+      </div>
+    </div>
   </body>
 </html>
 <!-- // to check the validation -->
 <script src="./js/ItemLists.js"></script>
 <script src="./js/validation_addData.js"></script>
 <script src="./js/delete.js"></script>
+<script src="./js/updateData.js"></script>
+<script src="./js/SortData.js"></script>
+
 <script type="text/javascript">
   let bodyData = document.querySelector("#body_data");
   let sumtot = document.querySelector("#id_total");
@@ -188,7 +211,7 @@
   let load_data = () => {
     bodyData.innerHTML = "";
     sampleData.map(
-      (data) =>
+      (data, key) =>
         (bodyData.innerHTML += `<tr role="row">
 
               <td data-title="Item" role="cell">${data.item}</td>
@@ -197,10 +220,8 @@
               <td data-title="Discount" role="cell">${data.discount}</td>
               <td data-title="Total" role="cell">Rs.${data.total}</td>
               <td data-title="Delete" role="cell">
+                <a href="#modal-two"><i class="material-icons" onclick ="updateData(${key},'${data.item}',${data.price} , ${data.qty} , ${data.discount})">edit</i></a>
                 <a href="#modal-one" ><i class="material-icons" onclick = "send_id(${data.id})" >delete</i></a>
-
-
-
               </td>
             </tr>`),
     );

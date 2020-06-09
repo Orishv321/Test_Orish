@@ -16,6 +16,12 @@ main {
   background-color: goldenrod;
   color: black;
 }
+.msg {
+  text-align: center;
+  font-weight: bold;
+  color: #faa995;
+  letter-spacing: 0.1cm;
+}
 h1 {
   text-align: center;
   letter-spacing: 0.3rem;

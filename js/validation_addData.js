@@ -51,16 +51,16 @@ let valid_discount = () => {
   }
   //   console.log(discount);
 };
+let total = (price, qty, discount) => {
+  let sum = Number(price) * Number(qty);
+  let total = Number(sum) - (Number(sum) * Number(discount)) / 100;
+  return total;
+};
 let addInvolce = () => {
   let item = document.querySelector("#id_item").value;
   let price = document.querySelector("#id_price").value;
   let qty = document.querySelector("#id_qty").value;
   let discount = document.querySelector("#id_discount").value;
-  let sum = Number(price) * Number(qty);
-  let total =
-    Number(sum) -
-    (Number(sum) * Number(discount)) / 100 +
-    (Number(sum) * 13) / 100;
 
   if (!valid)
     return (document.getElementById("id_warning_msg").style.display = "block");
@@ -72,7 +72,7 @@ let addInvolce = () => {
       price: price,
       qty: qty,
       discount: discount,
-      total: total,
+      total: total(price, qty, discount),
     };
     sampleData.push(data);
     load_data();
