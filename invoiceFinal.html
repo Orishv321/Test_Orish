@@ -35,7 +35,6 @@
         <table role="table" class="table">
           <thead role="rowgroup">
             <tr role="row">
-              <th role="columnheader">Date</th>
               <th role="columnheader">Item</th>
               <th role="columnheader">Price</th>
               <th role="columnheader">Qty</th>
@@ -47,7 +46,16 @@
           <tbody id="body_data" role="rowgroup"></tbody>
           <tbody id="input_data" role="rowgroup">
             <tr role="row">
-              <td></td>
+              <td colspan="7" class="warning-msg" id="id_warning_msg">
+                <span
+                  ><strong>
+                    Data cannot be added
+                  </strong>
+                  unvalid information</span
+                >
+              </td>
+            </tr>
+            <tr role="row">
               <td data-title="Item" role="cell">
                 <div class="col">
                   <input
@@ -121,13 +129,44 @@
         </table>
       </div>
     </main>
+    <!-- <a href="#modal-one" class="btn btn-big">Modal!</a> -->
+    <!-- // data from the modules -->
+
+    <!-- // data from the modules -->
+    <div class="modal" id="modal-one" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Warning</h2>
+          <a
+            href="#"
+            class="btn-close"
+            aria-hidden="true"
+            onclick="checkDelete(false)"
+            >×</a
+          >
+        </div>
+        <div class="modal-body">
+          <p>
+            Do you want to <strong class="error-msg">Delete </strong> the data ?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="#"><i class="material-icons" checkDelete(false)>clear</i></a>
+          <a href="#"
+            ><i class="material-icons" onclick="checkDelete(true)">check</i></a
+          >
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 <!-- // to check the validation -->
 <script src="./js/ItemLists.js"></script>
 <script src="./js/validation_addData.js"></script>
+<script src="./js/delete.js"></script>
 <script type="text/javascript">
   let bodyData = document.querySelector("#body_data");
+  let sumtot = document.querySelector("#id_total");
 
   let sampleData = [
     {
@@ -137,23 +176,31 @@
       price: 100,
       qty: 5,
       discount: 10,
-      total: null,
+      total: 100,
     },
   ];
+  let sumTotal = () => {
+    let sumTot = sampleData.map((amt) => amt.total).reduce((a, c) => a + c, 0);
+    sumTot = Number(sumTot) + (Number(sumTot) * 13) / 100;
+    sumtot.innerHTML = sumTot;
+  };
 
   let load_data = () => {
     bodyData.innerHTML = "";
     sampleData.map(
       (data) =>
         (bodyData.innerHTML += `<tr role="row">
-              <td data-title="Date" role="cell"${data.date}</td>
+
               <td data-title="Item" role="cell">${data.item}</td>
               <td data-title="Price" role="cell">${data.price}</td>
               <td data-title="Qty" role="cell">${data.qty}</td>
               <td data-title="Discount" role="cell">${data.discount}</td>
               <td data-title="Total" role="cell">Rs.${data.total}</td>
               <td data-title="Delete" role="cell">
-                <i class="material-icons">delete</i>
+                <a href="#modal-one" ><i class="material-icons" onclick = "send_id(${data.id})" >delete</i></a>
+
+
+
               </td>
             </tr>`),
     );
@@ -161,4 +208,5 @@
 
   //call to load the data
   load_data();
+  sumTotal();
 </script>
