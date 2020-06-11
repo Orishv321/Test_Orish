@@ -11,22 +11,19 @@ nav {
   justify-content: center;
   color: white;
 }
-footer{
+footer {
   position: fixed;
   background-color: #913d88;
   bottom: 0;
   width: 100vw;
-  color:white;
-
+  color: white;
 }
-.row{
+.row {
   display: flex;
   flex-direction: row;
 }
-footer i{
-  color :white;
-
-
+footer i {
+  color: white;
 }
 .footer-span {
   letter-spacing: 0.2cm;
@@ -40,8 +37,7 @@ main {
   padding: 0;
 }
 input {
-  margin: 0;
-  padding: 0;
+  margin-bottom: 5px;
   border: none;
   border-bottom: solid #30336b;
   background-color: transparent;
@@ -59,11 +55,12 @@ i {
 }
 
 .btn-owne {
+  margin: 1rem;
   margin-top: 1.5rem;
   border: none;
   border-radius: 5px;
   color: white;
-  background-color: #26ae60;
+  background-color: #87d37c;
   font-weight: bold;
   width: 10rem;
   height: 3rem;
@@ -78,6 +75,10 @@ i {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.m-x1 {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
 .g-row-wide {
   grid-column: span 3 / auto;
 }
@@ -89,23 +90,31 @@ i {
   display: flex;
   justify-content: space-between;
 }
+.h1-title {
+  text-align: center;
+  letter-spacing: 0.05cm;
+  font-size: 30px;
+  font-family: "David Libre", serif;
+  letter-spacing: 0.05cm;
+}
 .h1 {
   text-align: center;
-  letter-spacing: 0.2cm;
+  letter-spacing: 0.05cm;
+  font-size: 25px;
 }
 .cards {
   background-color: white;
   color: black;
   border: none;
   border-radius: 5px;
-
 }
 .card {
   background-color: white;
   margin: 0.5rem;
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15), 0px 10px 20px rgba(0, 0, 0, 0.05),
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15),
+    0px 10px 20px rgba(0, 0, 0, 0.05);
 }
 .card-inner {
   background: #aea8d3;
@@ -115,7 +124,7 @@ i {
   padding: 0.5rem;
 }
 .card-inner:hover {
-  background: #674172;
+  background: #aea8d3;
   color: white;
 }
 .card-title {
@@ -139,8 +148,6 @@ caption {
   letter-spacing: 0.2cm;
 }
 table {
- 
-    0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
   font-size: 14px;
   width: 100%;
   font-family: "Karla", sans-serif;
@@ -150,12 +157,12 @@ table {
 th {
   color: #ffffff;
   background: #8c14fc;
-  font-weight: 700;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
   /* font-weight: bold; */
-  font-size: 1rem;
-
+  font-size: 1.15rem;
+  height: 2.5rem;
   letter-spacing: 0.09cm;
 }
 
@@ -172,6 +179,9 @@ tr:hover {
 td {
   word-wrap: break-word;
   border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  height: 2.5rem;
+  font-size: 1.15rem;
 }
 
 /*--------------------------------------------------------------
@@ -286,7 +296,7 @@ td {
   top: 20%;
 }
 .modal-dialog {
-  background: #a683af;
+  background: #d5b8ff;
 
   border-radius: 5px;
   margin-left: -200px;
@@ -302,6 +312,9 @@ td {
   -moz-transition: -moz-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
+}
+.modal-dialog i {
+  color: #674172;
 }
 .modal-body {
   padding: 20px;
