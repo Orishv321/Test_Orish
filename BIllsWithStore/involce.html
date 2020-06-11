@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <link rel="shortcut icon" type="image/png" href="./assets/invoice.png"></link>
+    <link rel="stylesheet" href="./assets/all.css" />
+    <!-- //for google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <!-- //icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+  
+      <h1 class="h1">Doli Stationery Store</h1>
+      <div class="g-row">
+        <div class="cards"><h1 class="h1">Bills Send</h1> 
+          <div>
+            <input type="text" class="search-input" name="search" onkeyUp="search_User()" id="id_search"> 
+            <i class="material-icons" onclick="search_User()">search</i>
+          </div>
+        <div id = "id_history_show">
+          
+        </div>
+        </div>
+        <div  class="cards g-row-wide">
+          <h1 class="h1">Invoice Generator</h1>
+          <div class="card">
+              <div class="g-row">
+                  <div>
+                      <i class="material-icons">date_range</i> <strong id="id_date_today"></strong>
+                    </div>
+                    <div>
+                        <i class="material-icons">person</i> <input type="text" placeholder="Name" id = "id_Name">
+                      </div>
+                      <div onclick="sortByPrice()">
+                        <i class="material-icons" onclick="sortByPrice()">trending_up</i><strong>Sort By price</strong>
+                      </div>
+                      
+                </div>
+            <table role="table" class="table">
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th role="columnheader">Item</th>
+                    <th role="columnheader">Price</th>
+                    <th role="columnheader">Qty</th>
+                    <th role="columnheader">Total</th>
+                    <th role="columnheader">Maintain</th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup" id="id_display_data"></tbody>
+                <tbody role="rowgroup">
+                    <!-- //To display data  -->
+                    
+
+                    <tr role ="row" id="error_input_msg">
+                        <td colspan="5" class="err-msg"> The information is not valid  </td>
+                    </tr>
+                    <tr role="row" id = "id_display_input">
+                        <!-- to display input -->
+                        <td  data-title="Item" role="cell">
+                            <input  autocomplete="off" onblur="checkValid_item()"  list="itemList" type="text" name="Item" id="id_add_item"><br/>
+                            <datalist id="itemList" class="itemClass"> </datalist>
+                            <span class="err-msg" id="id_error_item" ></span>
+                        </td>
+                        <td  data-title ="Price" role="cell">
+                            <input  autocomplete="off" onblur="checkValid_price()" type="text" name="Price" id="id_add_price"><br/>
+                            <span class="err-msg" id="id_error_price" ></span>
+                        </td>
+                        <td  data-title ="Qty" role="cell">
+                            <input  autocomplete="off" onblur="checkValid_qty()" type="text" name="Qty" id="id_add_qty"><br/>
+                            <span class="err-msg" id="id_error_qty" ></span>
+                        </td>
+                        <td  role="cell" id="id_total">
+                        </td>
+                        <td  data-title ="Maintain" role="cell">
+                            <i class="material-icons" onclick="addBill()">add_box</i>
+
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot role="rowgroup">
+                    <tr role="row">
+                        <td colspan="4" role = "cell">Discount</td>
+                        <td colspan="" role="cell" data-title="Discount">
+                            <input type="text" value="0" name="discount" onblur="calculateSumtotal()" id="id_add_discount"/>%
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td colspan="4" role = "cell">Value Added Income (VAT)</td>
+                        <td colspan="" role="cell" data-title="VAT">13%</td>
+                    </tr>
+                    <tr role="row">
+                        <td colspan="4" role = "cell">SumTotal</td>
+                        <td colspan="" role="cell" data-title="SumTotal" >Rs. <strong id="id_sumtotal"></strong></td>
+                    </tr>
+                </tfoot>
+              </table>
+              <div class="space-between">
+
+                <button class="btn-owne" onclick="cleareAll()" > Clear All </button>
+                <a href="#modal-addBills" id="id__warning_call"> <button class="btn-owne" onclick="checkValid_homwInfo()"> Add Bill </button></a>
+              </div>
+
+        </div>
+        </div>
+      </div>
+
+      
+    <!-- // data from the modules -->
+    <div class="modal" id="modal-one" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Warning </h2>
+          <a href="#" class="btn-close" aria-hidden="true">×</a>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to <strong class="err-msg">Delete</strong> the data ??</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#"><i class="material-icons" onclick="checkDelete()">check</i></a>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="modal" id="modal-update" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Update</h2>
+          <a
+            href="#"
+            class="btn-close"
+            aria-hidden="true"
+            onclick="checkDelete(false)"
+            >×</a
+          >
+        </div>
+        <div id="id_update_data"></div>
+      </div>
+    </div>
+   
+    <!-- //warning message  -->
+    <div class="modal" id="modal-addBills" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Warning </h2>
+          <a href="#" class="btn-close" aria-hidden="true">×</a>
+        </div>
+        <div class="modal-body" id="id_addHome_message">
+        </div>
+        <div class="modal-footer">
+          <a href="#"><i class="material-icons" onclick="addToHistory()">check</i></a>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+<script src="./js/Store.js"></script>
+<script src="./js/ItemList.js"></script>
+<script src="./js/GetBills.js"></script>
+<script src="./js/Validate_Add.js"></script>
+<script src="./js/Delete_Update.js"></script>
+<script src = "./js/SortByPrice.js"></script>
+<script src = "./js/AddToHistory.js"></script>
+<script src = "./js/Search_users.js"></script>
+
+
+
+
+<script type="text/javascript">
+document.querySelector("#id_date_today").innerHTML = new Date().toLocaleString()
+</script>

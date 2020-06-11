@@ -1,39 +1,21 @@
+body {
+  background: #efefbb; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d4d3dd,
+    #efefbb
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d4d3dd,
+    #efefbb
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-family: "Karla", sans-serif;
+}
 main {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans KR", sans-serif;
-}
-.col {
-  display: flex;
-  flex-direction: column;
-}
-.error-msg {
-  color: red;
-}
-.warning-msg {
-  display: none;
-  text-align: center;
-  background-color: goldenrod;
-  color: black;
-}
-.msg {
-  text-align: center;
-  font-weight: bold;
-  color: #faa995;
-  letter-spacing: 0.1cm;
-}
-.right {
-  display: flex;
-  justify-content: flex-end;
-}
-h1 {
-  text-align: center;
-  letter-spacing: 0.3rem;
-}
-div {
-  margin-right: 2rem;
-  margin-left: 2rem;
-  margin-top: 0.5rem;
 }
 
 input {
@@ -45,18 +27,91 @@ input {
   height: 1.5rem;
   font-family: "Noto Sans KR", sans-serif;
 }
+.search-input {
+  margin-left: 1rem;
+  width: 80%;
+}
 i {
   cursor: pointer;
   color: #30336b;
   margin: 5px;
 }
-
-.search-input {
-  width: 95%;
-  margin-bottom: 10px;
+i:hover {
+  color: white;
 }
-/* //for the table  a sample templete */
-/* //for table only */
+.btn-owne {
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #26ae60;
+  font-weight: bold;
+  width: 10rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.g-row {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.m-y2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.g-row-wide {
+  grid-column: span 3 / auto;
+}
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.h1 {
+  text-align: center;
+  letter-spacing: 0.2cm;
+}
+.cards {
+  background-color: rgb(252, 240, 240);
+  color: black;
+  border: none;
+  border-radius: 10px;
+}
+.card {
+  background-color: white;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+.card-inner {
+  background: #aea8d3;
+  border: none;
+  border-radius: 15px;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+.card-inner:hover {
+  background: #674172;
+  color: white;
+}
+.card-title {
+  font-weight: bold;
+  letter-spacing: 0.1cm;
+}
+
+.err-msg {
+  color: red;
+  font-weight: bold;
+}
+.msg {
+  color: #f1e7fe;
+  text-align: center;
+}
+
+/* ///For the tables */
 caption {
   font-weight: bold;
   font-size: 2rem;
@@ -67,13 +122,13 @@ table {
     0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
   font-size: 14px;
   width: 100%;
-
+  font-family: "Karla", sans-serif;
   border-radius: 5px;
 }
 
 th {
   color: #ffffff;
-  background: #30336b;
+  background: #8c14fc;
   font-weight: 700;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -90,32 +145,27 @@ tr {
 }
 
 tr:hover {
-  background: #4bcffa;
+  background: #d5b8ff;
   color: black;
-  cursor: unset;
 }
 
 td {
   word-wrap: break-word;
   border-bottom: 1px solid #ccc;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 /*--------------------------------------------------------------
     # Small and medium screens
     --------------------------------------------------------------*/
 @media all and (max-width: 900px) {
-  .search-input {
-    width: 80%;
-  }
-
   thead,
   tbody,
   th,
   td,
   tr {
     display: block;
+    font-family: "Karla", sans-serif;
   }
 
   thead tr {
@@ -131,14 +181,14 @@ td {
   tr {
     margin: 0 0 1rem 0;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
-    border-top: 5px solid #30336b;
+    border-top: 5px solid #8c14fc;
     border-radius: 7px;
     padding-right: 5px;
   }
 
   tr:hover {
-    background: #bebfce;
-    color: black;
+    background: #8c14fc;
+    color: white;
   }
 
   td {
@@ -161,21 +211,8 @@ td {
   }
 }
 
-/* //css for module templete from the web */
-hr {
-  clear: both;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  border: 0;
-  border-top: 1px solid #aaa;
-}
-h1 {
-  font-size: 30px;
-  margin-bottom: 40px;
-}
-p {
-  margin-bottom: 20px;
-}
+/* ///for modeles only  */
+
 .btn {
   background: #428bca;
   border: #357ebd solid 1px;
@@ -199,7 +236,7 @@ p {
   min-width: 100px;
 }
 .btn-close {
-  color: #aaa;
+  color: rgb(0, 0, 0);
   font-size: 30px;
   text-decoration: none;
   position: absolute;
@@ -207,7 +244,7 @@ p {
   top: 0;
 }
 .btn-close:hover {
-  color: #919191;
+  color: #777777;
 }
 .modal:before {
   content: "";
@@ -230,8 +267,8 @@ p {
   top: 20%;
 }
 .modal-dialog {
-  background: #fefefe;
-  border: #333 solid 1px;
+  background: #a683af;
+
   border-radius: 5px;
   margin-left: -200px;
   position: fixed;

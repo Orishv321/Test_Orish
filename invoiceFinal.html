@@ -27,12 +27,18 @@
             type="text"
             name="search"
             id="id_search"
-            placeholder="Enter an item name"
+            placeholder="Enter item name"
+            autocomplete="off"
+            required
+            onkeypress="search_data()"
           />
-          <i class="material-icons">search</i>
+          <i class="material-icons" onclick="search_data()">search</i>
         </div>
-        <i class="material-icons" onclick="sortData(true)">trending_up</i>
-        <i class="material-icons" onclick="sortData(false)">trending_down</i>
+        <div class="right">
+          <i class="material-icons" onclick="sortData(false)">date_range</i>
+          <i class="material-icons" onclick="sortData(true)">trending_up</i>
+          <i class="material-icons" onclick="sortData(false)">trending_down</i>
+        </div>
 
         <table role="table" class="table">
           <thead role="rowgroup">
@@ -42,7 +48,7 @@
               <th role="columnheader">Qty</th>
               <th role="columnheader">Discount</th>
               <th role="columnheader">Total</th>
-              <th role="columnheader">Delete</th>
+              <th role="columnheader">Maintain</th>
             </tr>
           </thead>
           <tbody id="body_data" role="rowgroup"></tbody>
@@ -186,7 +192,7 @@
 <script src="./js/delete.js"></script>
 <script src="./js/updateData.js"></script>
 <script src="./js/SortData.js"></script>
-
+<script src="./js/SearchData.js"></script>
 <script type="text/javascript">
   let bodyData = document.querySelector("#body_data");
   let sumtot = document.querySelector("#id_total");
@@ -202,6 +208,7 @@
       total: 100,
     },
   ];
+
   let sumTotal = () => {
     let sumTot = sampleData.map((amt) => amt.total).reduce((a, c) => a + c, 0);
     sumTot = Number(sumTot) + (Number(sumTot) * 13) / 100;
