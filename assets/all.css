@@ -1,23 +1,44 @@
 body {
-  background: #efefbb; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #d4d3dd,
-    #efefbb
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #d4d3dd,
-    #efefbb
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  font-family: "Karla", sans-serif;
-}
-main {
   margin: 0;
   padding: 0;
+  font-family: "Karla", sans-serif;
+  background-color: #f1e7fe;
 }
+nav {
+  display: flex;
+  background-color: #913d88;
+  justify-items: center;
+  justify-content: center;
+  color: white;
+}
+footer{
+  position: fixed;
+  background-color: #913d88;
+  bottom: 0;
+  width: 100vw;
+  color:white;
 
+}
+.row{
+  display: flex;
+  flex-direction: row;
+}
+footer i{
+  color :white;
+
+
+}
+.footer-span {
+  letter-spacing: 0.2cm;
+  padding-top: 5px;
+}
+main {
+  margin: 1rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
+
+  padding: 0;
+}
 input {
   margin: 0;
   padding: 0;
@@ -29,20 +50,18 @@ input {
 }
 .search-input {
   margin-left: 1rem;
-  width: 80%;
+  width: 70%;
 }
 i {
   cursor: pointer;
-  color: #30336b;
+  color: #8c14fc;
   margin: 5px;
 }
-i:hover {
-  color: white;
-}
+
 .btn-owne {
   margin-top: 1.5rem;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   color: white;
   background-color: #26ae60;
   font-weight: bold;
@@ -75,23 +94,25 @@ i:hover {
   letter-spacing: 0.2cm;
 }
 .cards {
-  background-color: rgb(252, 240, 240);
+  background-color: white;
   color: black;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
+
 }
 .card {
   background-color: white;
   margin: 0.5rem;
   border: none;
   border-radius: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15), 0px 10px 20px rgba(0, 0, 0, 0.05),
 }
 .card-inner {
   background: #aea8d3;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   margin: 0.5rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .card-inner:hover {
   background: #674172;
@@ -118,7 +139,7 @@ caption {
   letter-spacing: 0.2cm;
 }
 table {
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05),
+ 
     0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
   font-size: 14px;
   width: 100%;
@@ -134,14 +155,13 @@ th {
   padding-bottom: 8px;
   /* font-weight: bold; */
   font-size: 1rem;
-  border-radius: 5px;
+
   letter-spacing: 0.09cm;
 }
 
 tr {
   text-align: center;
-  background: #fff0f6;
-  border-radius: 5px;
+  background: #f1e7fe;
 }
 
 tr:hover {
@@ -152,7 +172,6 @@ tr:hover {
 td {
   word-wrap: break-word;
   border-bottom: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 /*--------------------------------------------------------------
