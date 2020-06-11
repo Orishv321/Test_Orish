@@ -24,10 +24,15 @@
           
         </div>
         </div>
+        
+        
         <div  class="cards g-row-wide">
+          <div id = "bills_add">
+
+
           <h1 class="h1">Invoice Generator</h1>
           <div class="card">
-              <div class="g-row">
+              <div class="g-row space-between">
                   <div>
                       <i class="material-icons">date_range</i> <strong id="id_date_today"></strong>
                     </div>
@@ -84,7 +89,7 @@
                     <tr role="row">
                         <td colspan="4" role = "cell">Discount</td>
                         <td colspan="" role="cell" data-title="Discount">
-                            <input type="text" value="0" name="discount" onblur="calculateSumtotal()" id="id_add_discount"/>%
+                            <input type="text" value="0" onfocus="this.value=''" name="discount" onblur="calculateSumtotal()" id="id_add_discount"/>%
                         </td>
                     </tr>
                     <tr role="row">
@@ -102,9 +107,64 @@
                 <button class="btn-owne" onclick="cleareAll()" > Clear All </button>
                 <a href="#modal-addBills" id="id__warning_call"> <button class="btn-owne" onclick="checkValid_homwInfo()"> Add Bill </button></a>
               </div>
-
-        </div>
-        </div>
+          
+          
+            </div>
+            
+      </div>
+      <div id = "bills_show">
+        <h1 class="h1">Invoice Generator</h1>
+<div class="card">
+    <div class="g-row space-between">
+        <div>
+            <i class="material-icons">date_range</i> <strong id="id_date_today_show"></strong>
+          </div>
+          <div>
+              <i class="material-icons">person</i> <strong id = "id_Name_show">Name</strong>
+            </div>
+            <div>
+              <i class="material-icons" onclick="showAddBills()">arrow_back</i>
+            </div>
+      </div>
+  <table role="table" class="table">
+      <thead role="rowgroup">
+        <tr role="row">
+          <th role="columnheader">Item</th>
+          <th role="columnheader">Price</th>
+          <th role="columnheader">Qty</th>
+          <th role="columnheader">Total</th>
+          
+        </tr>
+      </thead>
+      <tbody role="rowgroup" id="id_display_data_show">
+        <tr role="row" >
+          <td  data-title="Item" role="cell">${data.item}</td>
+          <td  data-title ="Price" role="cell">${data.price}</td>
+          <td  data-title ="Qty" role="cell">${data.qty}</td>
+          <td  data-title ="Total" role="cell">${data.total}</td>
+           
+        </tr>
+      </tbody>
+      <tfoot role="rowgroup">
+          <tr role="row">
+              <td colspan="3" role = "cell">Discount</td>
+              <td  role="cell" data-title="Discount">
+                 <strong id="id_discount_show"></strong>
+              </td>
+          </tr>
+          <tr role="row">
+              <td colspan="3" role = "cell">Value Added Income (VAT)</td>
+              <td  role="cell" data-title="VAT">13%</td>
+          </tr>
+          <tr role="row">
+              <td colspan="3" role = "cell">SumTotal</td>
+              <td role="cell" data-title="SumTotal" >Rs. <strong id="id_sumtotal_show"></strong></td>
+          </tr>
+      </tfoot>
+    </table>
+  </div>
+      </div>
+    </div>
       </div>
 
       
@@ -167,10 +227,13 @@
 <script src = "./js/SortByPrice.js"></script>
 <script src = "./js/AddToHistory.js"></script>
 <script src = "./js/Search_users.js"></script>
+<script src = "./js/Show_tab_history.js"></script>
+
 
 
 
 
 <script type="text/javascript">
-document.querySelector("#id_date_today").innerHTML = new Date().toLocaleString()
+document.querySelector("#id_date_today").innerHTML = new Date().toLocaleString();
+document.querySelector("#bills_show").style.display ="none";
 </script>

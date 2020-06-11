@@ -52,7 +52,7 @@ let addBill = () => {
       total: total(price, qty),
     };
     itemsList.push(data);
-    showBills();
+    clearetab();
     calculateSumtotal();
     inputValid = false;
   }
@@ -71,4 +71,11 @@ let calculateSumtotal = () => {
     (Number(sumTot) * Number(discount)) / 100 +
     (Number(sumTot) * 13) / 100;
   document.querySelector("#id_sumtotal").innerHTML = sumTot;
+};
+let clearetab = () => {
+  let idsName = ["id_add_item", "id_add_price", "id_add_qty"];
+  idsName.map((idss, key) => {
+    document.getElementById(idss).value = "";
+  });
+  showBills();
 };
