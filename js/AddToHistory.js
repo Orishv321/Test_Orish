@@ -6,6 +6,7 @@ let checkValid_homwInfo = () => {
   if (!name.match(regName)) {
     document.querySelector("#id_addHome_message").innerHTML =
       "<p>Cannot add bill informations Invalid <strong>Name</strong></p>";
+    home_info_check = false;
   } else {
     document.querySelector("#id_addHome_message").innerHTML =
       "<p>Adding Bills to history ?</p>";
@@ -29,6 +30,7 @@ let addToHistory = () => {
     };
     history.push(data);
     showHistory();
+    home_info_check = false;
   }
 };
 
