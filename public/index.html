@@ -111,12 +111,12 @@
                 </tfoot>
               </table>
               <div class="space-between">
+                <a href="#modal-clearMessage" id="id__warning_call">
+                  <button class="btn-owne"  > Clear All </button>
+                   </a>
 
-                <button class="btn-owne" onclick="cleareAll()" > Clear All </button>
                 <a href="#modal-addBills" id="id__warning_call"> <button class="btn-owne" onclick="checkValid_homwInfo()"> Add Bill </button></a>
               </div>
-          
-          
             </div>
             
       </div>
@@ -132,6 +132,7 @@
             </div>
             <div>
               <i class="material-icons" onclick="showAddBills()">arrow_back</i>
+              <i class="material-icons" onclick="print()">print</i>
             </div>
       </div>
   <table role="table" class="table">
@@ -208,6 +209,22 @@
         <div id="id_update_data"></div>
       </div>
     </div>
+
+    <!-- // to clear all data  -->
+    <div class="modal" id="modal-clearMessage" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Warning </h2>
+          <a href="#" class="btn-close" aria-hidden="true">×</a>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to <strong class="err-msg">Clear all</strong> the data ??</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#"><i class="material-icons" onclick="cleareAll()">check</i></a>
+        </div>
+      </div>
+    </div>
    
     <!-- //warning message  -->
     <div class="modal" id="modal-addBills" aria-hidden="true">
@@ -236,8 +253,8 @@
 
       <i class="small material-icons">email</i><span class="footer-span"> : oxford@gmail.com</span>
     </div>
-  
   </div>
+ 
 </footer>
   </body>
 </html>
@@ -258,4 +275,7 @@
 <script type="text/javascript">
 document.querySelector("#id_date_today").innerHTML = new Date().toLocaleString();
 document.querySelector("#bills_show").style.display ="none";
+let print = ()=>{
+  window.print()
+}
 </script>

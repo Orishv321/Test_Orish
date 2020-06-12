@@ -42,11 +42,10 @@ let cleareAll = () => {
     "id_add_qty",
     "id_add_discount",
   ];
-  if (confirm("Do you want to Reset Bills ?")) {
-    idsName.map((idss, key) => {
-      document.getElementById(idss).value = "";
-    });
-    itemsList = [];
-    showBills();
-  }
+
+  idsName.map((idss, key) => {
+    document.getElementById(idss).value = "";
+  });
+  itemsList = [];
+  showBills();
 };
