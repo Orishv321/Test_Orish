@@ -67,7 +67,7 @@ i {
   color: white;
   background-color: #87d37c;
   font-weight: bold;
-  width: 10rem;
+  width: 9rem;
   height: 3rem;
   cursor: pointer;
 }
@@ -236,8 +236,8 @@ td {
   }
 
   tr:hover {
-    background: #8c14fc;
-    color: white;
+    background: #d5b8ff;
+    color: black;
   }
 
   td {
