@@ -30,6 +30,7 @@ let addToHistory = () => {
     };
     history.push(data);
     showHistory();
+    cleareAll();
     home_info_check = false;
   }
 };
@@ -46,6 +47,7 @@ let cleareAll = () => {
   idsName.map((idss, key) => {
     document.getElementById(idss).value = "";
   });
+  document.querySelector("#id_sumtotal").innerHTML = "";
   itemsList = [];
   showBills();
 };
