@@ -3,6 +3,8 @@ body {
   padding: 0;
   font-family: "Karla", sans-serif;
   background-color: #f1e7fe;
+  display: flex;
+  flex-direction: column;
 }
 nav {
   display: flex;
@@ -10,6 +12,8 @@ nav {
   justify-items: center;
   justify-content: center;
   color: white;
+  position: fixed;
+  width: 100vw;
 }
 footer {
   position: fixed;
@@ -34,6 +38,7 @@ main {
   margin-right: 5rem;
   margin-left: 5rem;
 
+  margin-top: 6rem;
   padding: 0;
 }
 input {
@@ -188,6 +193,21 @@ td {
     # Small and medium screens
     --------------------------------------------------------------*/
 @media all and (max-width: 900px) {
+  main {
+    margin: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+
+    margin-top: 6rem;
+    padding: 0;
+  }
+  .m-x1 {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  footer {
+    display: none;
+  }
   thead,
   tbody,
   th,
